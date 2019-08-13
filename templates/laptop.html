@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Products|Laptops{% endblock %}
+
+{% block content %}
+<div class="container">
+    <base href="{% static 'images/' %}">
+    {% for lt in laptop %}
+    <div class="card" style="width: 15rem; float: left; margin:15px;">
+        <center style="height:200px;">
+            <a href="/laptops/{{ lt.lap_id }}">
+                <img src="{{ lt.product_img }}" class="card-img-top img-fluid lap" style="height:100%; width:auto; padding:5px;" alt="...">
+            </a>
+        </center>
+        <div class="card-body">
+            <h5 class="card-title">{{ lt.brand_name }}</h5>
+            <h6 class="card-text">{{ lt.model }}</h6>
+            <p class="card-text">{{ lt.price }}</p>
+            <a href="/laptops/{{ lt.lap_id }}" class="btn btn-sm btn-primary">View Details</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

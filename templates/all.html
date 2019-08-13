@@ -1,0 +1,64 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}Products|All{% endblock %} 
+{% block content %}
+<base href="{% static 'images/' %}">
+<style>
+#b a
+{
+    color:white;
+}
+
+</style>
+
+<div class="container" style="margin-bottom:20px;">
+    <div class="row">
+        <div class="container">
+            <h2 style="text-decoration: underline; margin:15px">Phones:</h2>
+        </div>
+        {% for ph in phone %}
+        <div class="card" style="width: 15rem; float: left; margin:15px;">
+            <center style="height:200px;">
+                <a href="/phones/{{ ph.ph_id }}">
+                    <img src="{{ ph.product_img }}" class="card-img-top img-fluid" style="height:100%; width:auto; padding:5px;" alt="...">
+                </a>
+            </center>
+            <div class="card-body">
+                <h5 class="card-title">{{ ph.brand_name }}</h5>
+                <h6 class="card-text">{{ ph.model }}</h6>
+                <p class="card-text">{{ ph.price }}</p>
+                <a href="/phones/{{ ph.ph_id }}" class="btn btn-primary btn-sm">View Details</a>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="container text-center">
+            <a href="/phones" class="btn btn-outline-danger">View more</a>
+        </div>
+
+
+        <div class="container">
+            <h2 style="text-decoration: underline; margin:15px">Laptops:</h2>
+        </div>
+    
+        {% for lt in laptop %}
+        <div class="card" style="width: 15rem; float: left; margin:15px;">
+            <center style="height:200px;">
+              <a href="/laptops/{{ lt.lap_id }}">
+                <img src="{{ lt.product_img }}" class="card-img-top img-fluid" style="height:100%; width:auto; padding:5px;" alt="...">
+              </a>
+            </center>
+            <div class="card-body">
+                <h5 class="card-title">{{ lt.brand_name }}</h5>
+                <h6 class="card-text">{{ lt.model }}</h6>
+                <p class="card-text">{{ lt.price }}</p>
+                <a href="/laptops/{{ lt.lap_id }}" class="btn btn-primary btn-sm">View Details</a>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="container text-center">
+            <a href="/laptops" class="btn btn-outline-danger">View more</a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

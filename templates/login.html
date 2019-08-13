@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block login %}
+<style>
+#c a
+{
+    color:white;
+}
+</style>
+
+<div class="card border-primary container" style="width:30rem; margin-top:30px; padding:15px; border-radius: 20px; box-shadow: 5px 5px 10px #002125 !important;">
+    <div class="text-center modal-header">
+        <h4>SIGN IN</h4>
+    </div>
+    <form action="login" method="post">
+        {% csrf_token %}
+        <div class="modal-body">
+            <label>Username:</label>
+            <input type="text" name="username" class="form-control rad" pattern="[a-zA-Z0-9]+" required>
+
+            <label>Password:</label>
+            <input type="password" name="password" class="form-control rad" required> <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-dark rad">Login</button>
+            </div>
+        </div>
+    </form>
+    <div class="text-center">
+           <a href="{% url 'account:register' %}" class="btn btn-link">New Register here...</a>
+        </div>
+    <div>
+        {% for message in messages %}
+        <div class="container text-center alert alert-warning">
+            <h3>{{ message }}</h3>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
