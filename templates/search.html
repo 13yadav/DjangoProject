@@ -1,10 +1,10 @@
 {% extends 'base.html' %} 
 {% load static %} 
-{% block title %}Search Results{% endblock %} 
+{% block title %}{{ request.GET.q }} Results{% endblock %} 
 {% block content %}
 <div class="container">
     {% if result1 or result2 %}
-        <h5 style="margin-top:15px">Results for <i>{{ request.GET.q }}:</i></h5>
+        <h4 style="margin-top:15px;">Results for <i>{{ request.GET.q }}:</i></h4>
         <br>
         {% for result in result1 %}
         <base href="{% static 'images/' %}">
@@ -40,7 +40,7 @@
         </div>
     {% endfor %}
     {% else %}
-        <h5 style="text-align:center; margin:15px">No results available for {{ request.GET.q }}</h5>
+        <h3 class="alert alert-warning" style="text-align:center; margin:30px">No results available for {{ request.GET.q }}</h3>
     {% endif %} 
 </div>
 {% endblock %}
